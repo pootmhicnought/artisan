@@ -3476,7 +3476,7 @@ class ApplicationWindow(QMainWindow):  # pyright: ignore [reportGeneralTypeIssue
             self.buttonpalette.append(self.makePalette())
         self.buttonpalettemaxlen:List[int] = [14]*10  #keeps max number of buttons per row per palette
         self.buttonpalette_shortcuts:bool = True # if True palettes can be changed via the number keys
-        self.buttonsize:int = 1 # 0: tiny, 1: small (default), 2: large
+        self.buttonsize:int = 1 # 0: tiny, 1: small (default), 2: large, 3: xlarge
         self.mark_last_button_pressed:bool = True
         self.show_extrabutton_tooltips:bool = False
 
@@ -10469,6 +10469,10 @@ class ApplicationWindow(QMainWindow):  # pyright: ignore [reportGeneralTypeIssue
             # large
             button_min_width = str(self.standard_button_min_width_px)
             button_font_size = self.button_font_size_small
+        elif self.buttonsize == 3:
+            # xlarge
+            button_min_width = str(self.standard_button_min_width_px * 2)
+            button_font_size = f'{self.button_font_size_pt}pt'
         else:
             # small (default)
             button_min_width = self.small_button_min_width_str
